@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="windowsPE">
+        <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <SetupUILanguage>
+                <UILanguage>pl-PL</UILanguage>
+            </SetupUILanguage>
+            <InputLocale>pl-PL</InputLocale>
+            <SystemLocale>pl-PL</SystemLocale>
+            <UILanguage>pl-PL</UILanguage>
+            <UserLocale>pl-PL</UserLocale>
+        </component>
+        <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DiskConfiguration>
+                <WillShowUI>OnError</WillShowUI>
+                <Disk wcm:action="add">
+                    <CreatePartitions>
+                        <CreatePartition wcm:action="add">
+                            <Order>3</Order>
+                            <Extend>true</Extend>
+                            <Type>Primary</Type>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
+                            <Order>2</Order>
+                            <Size>128</Size>
+                            <Type>MSR</Type>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
+                            <Order>1</Order>
+                            <Size>150</Size>
+                            <Type>EFI</Type>
+                        </CreatePartition>
+                    </CreatePartitions>
+                    <ModifyPartitions>
+                        <ModifyPartition wcm:action="add">
+                            <Format>NTFS</Format>
+                            <Label>Windows</Label>
+                            <Letter>C</Letter>
+                            <Order>3</Order>
+                            <PartitionID>3</PartitionID>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Order>1</Order>
+                            <PartitionID>1</PartitionID>
+                            <Format>FAT32</Format>
+                        </ModifyPartition>
+                    </ModifyPartitions>
+                    <WillWipeDisk>true</WillWipeDisk>
+                    <DiskID>0</DiskID>
+                </Disk>
+            </DiskConfiguration>
+            <ImageInstall>
+                <OSImage>
+                    <InstallTo>
+                        <DiskID>0</DiskID>
+                        <PartitionID>3</PartitionID>
+                    </InstallTo>
+                </OSImage>
+            </ImageInstall>
+            <UpgradeData>
+                <Upgrade>false</Upgrade>
+                <WillShowUI>OnError</WillShowUI>
+            </UpgradeData>
+            <UserData>
+                <ProductKey>
+                    <WillShowUI>OnError</WillShowUI>
+                    <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+                </ProductKey>
+                <AcceptEula>true</AcceptEula>
+                <FullName></FullName>
+                <Organization></Organization>
+            </UserData>
+        </component>
+    </settings>
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <InputLocale>pl-PL</InputLocale>
+            <SystemLocale>pl-PL</SystemLocale>
+            <UILanguageFallback></UILanguageFallback>
+            <UserLocale>pl-PL</UserLocale>
+            <UILanguage>pl-PL</UILanguage>
+        </component>
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideLocalAccountScreen>true</HideLocalAccountScreen>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <ProtectYourPC>1</ProtectYourPC>
+            </OOBE>
+        </component>
+    </settings>
+    <cpi:offlineImage cpi:source="wim:c:/users/administrator/desktop/w11/sources/install.wim#windows" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+</unattend>
